@@ -1,0 +1,9 @@
+{% extends 'main.html' %} {% load static %} {% block content %}
+<div class="container p-5">
+  <h5 class="fw-bold display-5">{{room_name}}</h5>
+  <textarea id="chat-log" cols="100" rows="20"></textarea><br />
+  <input id="chat-message-input" type="text" size="100" /><br />
+  <input class="px-4" id="chat-message-submit" type="button" value="Send" />
+  {{ room_name|json_script:"room-name" }}
+</div>
+{% endblock content %}
