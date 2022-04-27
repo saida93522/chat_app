@@ -1,7 +1,7 @@
 // chatSocket
 const roomName = JSON.parse(document.getElementById("room-name").textContent);
 
-const chatSocket = new WebSocket(
+const chatSocket = new ReconnectingWebSocket(
   "ws://" + window.location.host + "/ws/chat/" + roomName + "/"
 );
 
@@ -28,6 +28,7 @@ document.querySelector("#chat-message-submit").onclick = function (e) {
   chatSocket.send(
     JSON.stringify({
       message: message,
+      command: "fetch_messages",
     })
   );
   messageInputDom.value = "";
